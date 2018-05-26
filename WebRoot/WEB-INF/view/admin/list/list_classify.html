@@ -1,0 +1,166 @@
+<!--:
+	layout("/common/_layout.html" , {title : '小说分类' , page:'classify'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">添加分类</div>
+
+        <div class="panel-body">
+
+            <form method="post">
+
+                <div class="form-horizontal">
+
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                        <label class="col-lg-4 control-label">上级分类</label>
+                        <div class="col-sm-8">
+                            <!--:if(!isEmpty(parent)){-->
+                            <div class="input-group">
+                                <input type="text" placeholder="无上级分类则为一级分类" data-empty="true" value="${parent.cName!}" class="form-control form-parent" readonly/>
+                                <input type="hidden" name="e.parentId" data-empty="true" value="${parent.id!}" class="form-parent"/>
+                                <div class="input-group-addon ">
+                                    <a href="javascript:;" data-cmd="resetMyParentId" class="glyphicon glyphicon-remove"></a>
+                                </div>
+                            </div>
+                            <!--:}else{-->
+                            <input type="text" placeholder="无上级分类则为一级分类" data-empty="true" value="${parent.cName!}" class="form-control form-parent" readonly/>
+                            <input type="hidden" name="e.parentId" data-empty="true" value="${parent.id!}" class="form-parent"/>
+                            <!--:}-->
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                        <label class="col-lg-4 control-label">分类名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" data-max="10" data-min="2" name="e.cName" value="${c.cName!}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                        <label class="col-lg-4 control-label">排序</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control"  name="e.orderNum" value="${c.orderNum!}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                        <div class="col-lg-8 col-lg-offset-4">
+                            <input type="hidden" name="e.id" data-empty="true" value="${c.id!}"/>
+                            <!--: if(isEmpty(c)){  -->
+                            <a href="/admin/save/classify" data-submit="true" class="btn btn-danger">确认添加</a>
+                            <!--: }else{  -->
+                            <a href="/admin/save/classify" data-submit="true" data-redirect="/admin/list/classify" class="btn btn-success">确认修改</a>
+                            <!--: }  -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="panel-group" id="classifyGroup">
+
+        <!--:  for( a in list ){-->
+
+        <!--:if( isEmpty(a.parentId) ){-->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title clearfix">
+                    <a class="header" data-toggle="collapse" href="#${a.id}">
+                        ${a.cName!}
+                    </a>
+                    <div class="pull-right">
+                        <a href="${ctx}/admin/list/classify?parentId=${a.id}" class="btn btn-default btn-sm ">
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                            添加子类
+                        </a>
+                        <a href="${ctx}/admin/list/classify?id=${a.id}" class="btn btn-default btn-sm ">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            修改
+                        </a>
+                        <a href="#delete" data-toggle="modal" data-url="/admin/delete/classify?id=${a.id}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            删除
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--: if(a.childrenNum > 0){ -->
+            <div id="${a.id}" class="panel-collapse collapse in">
+                <ul class="list-group list-group-sec">
+                    <!--:for( b in list){-->
+                    <!--:if(b.parentId == a.id ){-->
+                    <li class="list-group-item clearfix">
+                        <a class="header" data-toggle="collapse" href="#${b.id}">
+                            <strong>${b.orderNum}. ${b.cName}</strong>
+                        </a>
+                        <div class="pull-right">
+                            <a href="${ctx}/admin/list/classify?id=${b.id}" class="btn btn-default btn-sm ">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                修改
+                            </a>
+                            <a href="#delete" data-toggle="modal" data-url="/admin/delete/classify?id=${b.id}" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                删除
+                            </a>
+                        </div>
+                    </li>
+
+                    <!--:}-->
+                    <!--:}-->
+                </ul>
+            </div>
+            <!--: } -->
+
+
+
+
+
+        </div>
+
+        <!--:}-->
+
+        <!--: }-->
+
+
+    </div>
+
+
+</div>
+
+<div class="modal fade" id="delete">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">警告</h4>
+            </div>
+            <div class="modal-body">
+                删除后无法恢复，确认删除该记录？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--:}-->
+
+
+<script>
+    $('[data-cmd="resetMyParentId"]').on('click',function(e){
+        e.preventDefault() ;
+        $(this).parents('.col-sm-8').html('<input type="text" data-empty="true" class="form-control" readonly/><input type="hidden" name="e.parentId" data-empty="true" />');
+        return false ;
+    });
+</script>

@@ -1,0 +1,147 @@
+<div class="page" data-title="充值" data-preload="userCenter,classify,home" data-menu="3">
+    <div class="main">
+        <!--充值区域 s-->
+        <div class="sum sum-recharge" data-unload="once" data-cmd="info_user" data-params="recharge">
+            <div class="left">账户余额</div>
+            <div class="right">
+                <span class="text-red">N.coins.L</span> 飞花币
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="recharge">
+            
+                <div class="item">
+                    <div class="sumGroup sumGroup-none">
+                        <label>
+                            <input type="radio" name="amount" value="3000" checked>
+                            <div class="button">
+                                <div class="money">30元</div>
+                                <div class="coin">3000飞花币</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sumGroup">
+                        <label>
+                            <input type="radio" name="amount" value="5000">
+                            <div class="button">
+                                <div class="givings">送10元</div>
+                                <div class="money">50元</div>
+                                <div class="coin">
+                                    5000飞花币<span class="text-red">+1000飞花币</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sumGroup">
+                        <label>
+                            <input type="radio" name="amount" value="10000">
+                            <div class="button">
+                                <div class="givings">送25元</div>
+                                <div class="money">100元</div>
+                                <div class="coin">1万飞花币
+                                    <span class="text-red">+2500飞花币</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sumGroup">
+                        <label>
+                            <input type="radio" name="amount" value="20000">
+                            <div class="button">
+                                <div class="givings">送60元</div>
+                                <div class="money">200元</div>
+                                <div class="coin">2万飞花币
+                                    <span class="text-red">+6000飞花币</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sumGroup">
+                        <label>
+                            <input type="radio" name="amount" value="50000">
+                            <div class="button">
+                                <div class="givings">送200元</div>
+                                <div class="money">500元</div>
+                                <div class="coin">5万飞花币
+                                    <span class="text-red">+2万飞花币</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sumGroup">
+                        <label>
+                            <input type="radio" name="amount" value="100000">
+                            <div class="button">
+                                <div class="givings">送500元</div>
+                                <div class="money">1000元</div>
+                                <div class="coin">10万飞花币
+                                    <span class="text-red">+5万飞花币</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="linkGroup linkGroup-block linkGroup-recharge" data-unload="once" data-cmd="checkUserAgent">
+
+              <!--    <a href="/save/recharge?chapterId=N.params.L&payType=2" data-submit="true" data-cmd="createSuccess" class="item clear">
+                    <div class="left fl">
+                        <span class="font weixin">&#xe958;</span>
+                                                                 微信支付
+                    </div>
+                    <div class="right font fr"></div>
+                </a>  -->
+                
+                <a href="/save/recharge?payType=2" data-submit="true"  data-cmd="createSuccess" class="item clear">
+                    <div class="left fl">
+                        <span class="font weixin">&#xe958;</span>
+                                                                 微信支付测试接口
+                    </div>
+                    <div class="right font fr"></div>
+                </a> 
+                
+
+                 <a href="/save/recharge?chapterId=N.params.L&payType=1" data-submit="true" data-cmd="createSuccess" class="item clear">
+                    <div class="left fl">
+                        <span class="font alipay">&#xe602;</span>
+                       	 支付宝支付
+                    </div>
+                    <div class="right font fr"></div>
+                </a>
+ 
+               
+                <div style="padding: 0 15px;">
+                    <a href="/save/recharge?chapterId=N.params.L&payType=2" data-submit="true" data-cmd="createSuccess" class="btn btn-success">微信支付</a>
+                </div>
+
+                 <div style="padding: 0 15px;margin-top: 10px;">
+                    <a href="/save/recharge?chapterId=N.params.L&payType=3" data-submit="true" data-cmd="createSuccess" class="btn btn-success">微信支付（测试专用）</a>
+                </div>
+ 
+
+            </div>
+
+
+        </form>
+        <!--充值区域 e-->
+    </div>
+</div>

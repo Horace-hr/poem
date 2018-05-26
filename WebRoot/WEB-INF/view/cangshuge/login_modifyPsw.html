@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="modifyBag">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>管理后台 - 修改密码</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${ctx}/css/admin.css?v=${version!}">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body class="modifyBag">
+<input type="hidden" id="host" value="${ctx}"/>
+
+<div class="login-wrapper">
+    <div class="container">
+
+        <img src="${ctx}/images/logo.png" alt="" class="loginLogo"/>
+
+        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-inverse ">
+                <!-- Default panel contents -->
+                <div class="panel-heading">请在此重新设置登录密码</div>
+
+                <div class="panel-body">
+                    <form action=""  method="post" >
+
+                        <div class="form-group  ">
+                            <label>用户名</label>
+                            <input type="text" class="form-control" name="x.userName" value="${uName!}"  placeholder="输入用户名">
+                        </div>
+
+                        <div class="form-group  ">
+                            <label>原密码</label>
+                            <input type="password" class="form-control" name="x.password"  placeholder="输入原始密码">
+                        </div>
+
+                        <div class="form-group">
+                            <label>新密码</label>
+                            <input type="password" class="form-control" placeholder="输入密码"  name="newPsw">
+                        </div>
+
+                        <div class="form-group">
+                            <label>确认密码</label>
+                            <input type="password" class="form-control" placeholder="输入密码"  name="rePsw">
+                        </div>
+
+                        <div class="form-group">
+                            <label>验证码</label>
+                            <div class="input-group group-captcha">
+                                <input type="text" class="form-control" placeholder="输入验证码"  name="code">
+                                <a href="javascript:;" class="input-group-addon">
+                                    <img src="${ctx}/cangshuge/captcha" onclick="javascript:this.src='${ctx}/cangshuge/captcha?time=' + new Date().getTime();" data-reset="true" alt=""/>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <a href="/cangshuge/resetPsw" data-submit="true" data-redirect="/cangshuge"
+                               data-error="valideLogin"  class="btn btn-danger btn-block">确认修改</a>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="${ctx}/js/admin_form.js"></script>
+<script src="${ctx}/js/admin_main.js"></script>
+</body>
+</html>
+
+
+
+

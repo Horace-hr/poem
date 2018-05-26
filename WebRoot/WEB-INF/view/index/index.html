@@ -1,0 +1,101 @@
+<!DOCTYPE html >
+<html oncontextmenu="return false" onselectstart="return false"
+	onpaste="return false" oncopy="return false" oncut="return false"
+	ondrag="return false ">
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="sharecontent" data-msg-title="飞花令——中国诗词学习平台"
+	data-msg-content="弘扬中华传统文化，帮助学习中国诗词，加深文化素养，诗词高手之间的对方与挑战" data-line-title="飞花令" />
+<link rel="stylesheet" href="${ctx}/css/loader.min.css?v=20170304_01" />
+<link rel="stylesheet" href="${ctx}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${ctx}/css/audio.css" />
+<link rel="stylesheet" href="${ctx}/css/wx_qr.css" />
+<link rel="stylesheet" href="${ctx}/css/footNav.css" />
+<script type="text/javascript">
+    var temp='${cid}';
+	var arr = [];
+	arr.push('<div id="loading">');
+	arr.push('<div class="logo" onclick="javascript:location.reload();"></div>');
+	arr.push('<div class="loader" onclick="javascript:location.reload();">');
+	arr.push('</div></div>');
+	document.write(arr.join(''));
+</script>
+
+<link rel="stylesheet" href="${ctx}/css/mobile.min.css?v=20170304_02" />
+</head>
+<body data-homeTitle="首页-飞花令">
+	<div id="menu">
+	<a class="item"  href="javascript:history.back(-1)" ><span class="glyphicon glyphicon-menu-left" style="font-size:14px;color:white" >返回</span></a>
+	</div>
+
+	<a href="javascript:;" class="backTop"> &#xe60f; </a>
+
+	<div class="footer-outer">
+		<div class="footer">
+			<div class="ewm">
+				<img src="/img/qr.jpg" width="80" height="80" alt="" />
+			</div>
+			<div class="section kefu">
+				<p>
+					工作时间：周一到周日 8:30-18:00 <br /> 客服QQ：2553249536 <br />
+					客服电话：18621829136 <br /> 微信公众号：特莱伦斯<br />
+				</p>
+			</div>
+		</div>
+
+		<div class="copyright">
+			<p class="copy">Copyright © 2018 programme.com All rights
+				reserved.</p>
+		</div>
+
+	</div>
+
+
+	<div class="footNav">
+		<dl>
+			<a class="item" href="home" data-action="switch" data-sort="1"
+				data-params="">
+				<dt>
+					<span class="glyphicon glyphicon-home"></span>
+				</dt>
+				 <dd>飞花令</dd>
+			</a>
+		</dl>
+		<dl>
+			<a class="item" href="novelList" data-action="switch" data-sort="2"
+				data-params="">
+				<dt>
+					<span class="glyphicon glyphicon-th"></span>
+				</dt>
+				<dd>诗词集</dd>
+			</a>
+		</dl>
+		<dl>
+			<a class="item" href="http://mp.weixin.qq.com/s/iG8VjOOohc2xaajUyc2ZhA"
+				data-params="">
+				<dt>
+					<span class="glyphicon glyphicon-comment"></span>
+				</dt>
+				<dd>活动资讯</dd>
+			</a>
+		</dl>    
+		<dl>
+			<a class="item" href="userCenter" data-action="switch" data-sort="4"
+				data-params="">
+				<dt>
+					<span class="glyphicon glyphicon-user"></span>
+				</dt>
+				<dd>个人中心</dd>
+			</a>
+		</dl>
+
+
+		<div class="clearfix"></div>
+	</div>
+	<!--footNav/-->
+	<script src="${ctx}/js/loader.min.js?v=20170304_05"></script>
+</body>
+</html>

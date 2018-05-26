@@ -1,0 +1,271 @@
+<!--:
+	layout("/common/_layout.html" , {title : '章节管理' , page:'chapter'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">筛选</div>
+
+        <div class="panel-body">
+
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                1.txt文件请命名为小说名字，请保证导入txt文件的格式统一，<a href="${ctx}/admin/info/download"><b>点此下载 </b></a> txt文件格式模板
+                <br/>
+                2.小说封面图片命名应与小说名一致，点“上传小说图片”按钮，导入小说封面图片。
+            </div>
+
+            <form action="${ctx}/admin/list/chapter" id="myform" method="post">
+
+                <div class="form-horizontal clearfix">
+
+                    <div class="form-group col-lg-3 ">
+                        <label class="col-lg-3 control-label">书名</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="hidden" name="pageNum" id="pageNum">
+                                <input type="hidden" name="novelId" value="${map.novelId!}">
+                                <input type="text" class="form-control" name="nName" value="${map.nName!}">
+                                <a href="javascript:;" data-cmd="submitForm" class="input-group-addon">
+                                    筛选
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--: if(isNotEmpty(map.novelId) && map.isAdd == '1' ){ -->
+                    <div class="col-lg-4">
+
+                        <a href="${ctx}/admin/info/chapter?novelId=${map.novelId}" class="btn btn-info">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            继续新增章节
+                        </a>
+                        <a href="${ctx}/admin/info/novel" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            新发布小说
+                        </a>
+                    </div>
+                    <!--: } -->
+                    <div class="col-lg-4">
+                        <div class="pull-left">
+                            <a href="javascript:;" class="btn btn-info" id="uploadNovel">
+                                批量导入小说
+                            </a>
+                        </div>
+                        <div class="pull-left" style="margin-left: 10px;">
+                            <a href="javascript:;" class="btn btn-info" id="uploadNovelPic">
+                                上传小说图片
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            章节列表
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>小说</th>
+                    <th>章节</th>
+                    <th>字数/价格</th>
+                    <th>收入</th>
+                    <th>更新时间</th>
+                    <th style="width: 293px;">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:  for( x in page.list ){-->
+                <tr class="quote-list">
+                    <td>
+                       《 ${x.nName} 》
+                    </td>
+                    <td class="line">
+                        第 ${x.number} 章 ${x.title}
+                    </td>
+                    <td><span class="text-info">
+                        ${x.count}</span> 字 / <span class="text-danger">${x.price!(0)}</span> 书币
+                    </td>
+                    <td>
+                        <span class="text-success">${x.income!(0)}</span> 书币
+                    </td>
+                    <td>
+                        ${x.time,"yyyy-MM-dd HH:mm"}
+                    </td>
+                    <td style="position: relative;">
+                        <a href="javascript:;"  data-clipboard-text="${ctx}/novel?params=${x.number}-${x.novelId}&page=chapterInfo"
+                           class="btn btn-success btn-sm copyBtn">
+                            复制链接
+                        </a>
+                        <div class="tooltip fade top" style="top: -22px;left: 13px;">
+                            <div class="tooltip-arrow"></div>
+                            <div class="tooltip-inner">复制成功</div>
+                        </div>
+                        <a href="${ctx}/admin/info/chapter?id=${x.id}" class="btn btn-default btn-sm ">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            修改
+                        </a>
+                        <a href="#delete" data-toggle="modal" data-url="/admin/delete/chapter?id=${x.id}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            删除
+                        </a>
+                    </td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+
+            <!--: if(page.totalRow > page.pageSize){ -->
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <!--:
+                        include("/common/_page.html",{
+                            uri : ctx+'/list/chapter',
+                            page : page
+                        }){}
+                     -->
+                </div>
+            </div>
+            <!--: } -->
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="modal fade" id="delete">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">警告！谨慎操作！</h4>
+            </div>
+            <div class="modal-body">
+                删除后无法恢复，且会对所有章节进行重新排序，确认删除该章节？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loading-wrapper">
+    <div class="alert alert-success">
+        上传中，请勿操作。
+    </div>
+</div>
+
+
+<!--:}-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+<script>
+    var clipboard = new Clipboard('.copyBtn');
+    clipboard.on('success', function(e) {
+        $(e.trigger).next().addClass('in');
+        setTimeout(function () {
+            $(e.trigger).next().removeClass('in');
+        },2000);
+    });
+</script>
+<script src="${ctx}/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript">
+//    document.write("<script type='text/javascript' src='${ctx}/js/jquery.uploadify.min.js?" + new Date()+ "'></s" + "cript>");
+    $(function() {
+        var uploader = $('#uploadNovel') ;
+        var novelCount = 0 ;
+        var successNovelCount = 0 ;
+        uploader.uploadify({
+            'progressData' : 'speed',
+            'height' : 34,
+            'width' : 110,
+            'swf' : '${ctx}/js/uploadify.swf',
+            'uploader' : '${ctx}/admin/save/file',
+            'removeTimeout' : 3 ,
+            'fileTypeExts' : '*.txt;',
+            'method' : 'post',
+            'fileObjName' : 'upfile' ,
+            'buttonClass' : "btn btn-default fileinput-button",
+            'buttonText' : '批量导入小说',
+            'onUploadSuccess' : function(file, data, response) {//成功完成文件上传时触发一次
+                successNovelCount ++ ;
+                $('.loading-wrapper .alert').text('上传中，请勿操作。已上传' + successNovelCount + "个文件");
+                if( novelCount == successNovelCount ){
+                    location.href = host + "/admin/list/novel" ;
+                }
+            },
+            'onUploadProgress' : function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+                $('.loading-wrapper').show();
+            },
+            onQueueComplete:function(queueData){
+                novelCount = queueData.uploadsSuccessful - queueData.uploadsErrored ;
+                if( novelCount == successNovelCount ){
+                    location.href = host + "/admin/list/novel" ;
+                }
+            } ,
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                alert('文件： ' + file.name + ' 格式错误，系统无法读取 ');
+            }
+        });
+
+        var picCount = 0 ;
+        var successPicCount = 0 ;
+        $('#uploadNovelPic').uploadify({
+            'progressData' : 'speed',
+            'height' : 34,
+            'width' : 110,
+            'swf' : '${ctx}/js/uploadify.swf',
+            'uploader' : '${ctx}/admin/save/novelPic',
+            'removeTimeout' : 3 ,
+            'fileTypeExts' : '*.gif;*.jpg;*.png;*.jpeg;',
+            'method' : 'post',
+            'fileObjName' : 'upfile' ,
+            'buttonClass' : "btn btn-default fileinput-button",
+            'buttonText' : '上传小说图片',
+            'onUploadSuccess' : function(file, data, response) {//成功完成文件上传时触发一次
+                successPicCount ++ ;
+                $('.loading-wrapper .alert').text('上传中，请勿操作。已上传' + successPicCount + "个文件");
+                if( picCount == successPicCount ){
+                    location.href = host + "/admin/list/novel" ;
+                }
+            },
+            'onUploadProgress' : function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+                $('.loading-wrapper').show();
+            },
+            onQueueComplete:function(queueData){
+                picCount = queueData.uploadsSuccessful - queueData.uploadsErrored ;
+                if( picCount == successPicCount ){
+                    location.href = host + "/admin/list/novel" ;
+                }
+            } ,
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                alert('文件： ' + file.name + ' 格式错误，系统无法读取 ');
+            }
+        });
+
+    });
+
+
+</script>

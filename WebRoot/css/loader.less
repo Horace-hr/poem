@@ -1,0 +1,122 @@
+@-moz-keyframes loading {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  26% {
+    opacity: .4;
+  }
+  76% {
+    opacity: .6;
+  }
+}
+@-webkit-keyframes loading {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  26% {
+    opacity: .4;
+  }
+  76% {
+    opacity: .6;
+  }
+}
+@keyframes loading {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  26% {
+    opacity: .4;
+  }
+  76% {
+    opacity: .6;
+  }
+}
+.loader {
+  overflow: hidden;
+}
+.loader span {
+  -moz-animation: loading 2s linear infinite -1.6s;
+  -webkit-animation: loading 2s linear infinite -1.6s;
+  animation: loading 2s linear infinite -1.6s;
+  float: left;
+}
+.loader .span2 {
+  -moz-animation: loading 2s linear infinite -0.4s;
+  -webkit-animation: loading 2s linear infinite -0.4s;
+  animation: loading 2s linear infinite -0.4s;
+}
+.loader .span3 {
+  -moz-animation: loading 2s linear infinite -1s;
+  -webkit-animation: loading 2s linear infinite -1s;
+  animation: loading 2s linear infinite -1s;
+}
+.loader .span4 {
+  -moz-animation: loading 2s linear infinite -2.2s;
+  -webkit-animation: loading 2s linear infinite -2.2s;
+  animation: loading 2s linear infinite -2.2s;
+}
+#NP_loading{
+  &:after{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    background-color: rgba(0,0,0,.9);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+  }
+  img{
+    height: 20px!important;
+    width: 20px!important;
+    margin-top: -10px !important;
+    margin-left: -10px!important;
+    z-index: 9999999999999;
+  }
+}
+#loading{
+  position: fixed;top: 0;left: 0;bottom: 0;right: 0;background-color: #ff577b;text-align: center;z-index: 999999999999;padding-top: 50%;
+  >.logo{
+    height: 70px;
+    background-image: url(../images/logos.png);
+    background-repeat: no-repeat;
+    width: 70px;
+    background-size: contain;
+    margin: -25px auto 10px;
+  }
+  .loader{
+
+    text-align: center;
+    height: 50px;
+    width: 88px;
+    margin: 0 auto;
+    >span{
+      display: inline-block;
+      background-image: url(../images/logoText.png);
+      background-repeat: no-repeat;
+      width: 22px;
+      height: 30px;
+      background-size: 99px;
+      &.span1{
+        background-position: 0 0;
+      }
+      &.span2{
+        background-position: -25px 0;
+      }
+      &.span3{
+        background-position: -52px 0;
+      }
+      &.span4{
+        background-position: -80px 0;
+      }
+    }
+  }
+}
+

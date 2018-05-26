@@ -1,0 +1,23 @@
+<div class="page" data-title="章节目录" data-preload="chapterListDesc,chapterInfo" data-clone="true">
+    <div class="topBar">
+        <a href="javascript:;" onclick="history.go(-1)" class="back">返回</a>
+        <a href="home" data-action="switch" class="back back-home font">&#xe61e;</a>
+        <div class="resetGroup">
+            <a href="chapterListDesc" data-action="switch" data-params="N.params.L" class="bigger font ">
+                <span class="font font-order">&#xe61b;</span>
+                倒序
+            </a>
+        </div>
+    </div>
+    <div class="chapterList" data-unload="once" data-cmd="page_chapters">
+        <a href="chapterInfo" data-action="switch" data-params="N.number.L-N.novelId.L" class="item">
+            <if data-key="price" data-value="0">
+                <span class="vip vip-free">free</span>
+            </if>
+            <else>
+                <span class="vip">vip</span>
+            </else>
+            第N.zNum.L章 <span class="title">N.title.L</span>
+        </a>
+    </div>
+</div>

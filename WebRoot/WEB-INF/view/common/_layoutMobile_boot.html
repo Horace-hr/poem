@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>${title!}</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${ctx}/css/mobile.css?v=${version!}">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${ctx}/css/font.css?v=${version!}"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse visible-lg visible-md" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:;">后台管理系统</a>
+        </div>
+
+        <!--:if(page != 'login'){-->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="${page == 'addBlog' ? 'active'}"><a href="${ctx}/info/chooseType">发布文章</a></li>
+                <li class="${page == 'myBlogs' ? 'active'}"><a href="${ctx}/list/myBlogs">文章列表</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:;" style="padding-top: 10px;padding-bottom: 0;">
+                         ${nickname!}
+                    </a>
+                </li>
+                <li><a href="${ctx}/login/quit?pc=true">退出</a></li>
+            </ul>
+        </div>
+        <!--:}-->
+    </div><!-- /.container-fluid -->
+</nav>
+<input type="hidden" id="host" value="${ctx}"/>
+
+${layoutContent}
+
+<script src="${ctx}/js/form.js?v=${version!}"></script>
+<script src="${ctx}/js/mobile.js?v=${version!}234"></script>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/19035878.js"></script>
+<noscript>
+    <a href="http://www.51.la/?19035878" target="_blank">
+        <img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/19035878.asp" style="border:none;display: none;" />
+    </a>
+</noscript>
+<script>
+    $(function(){
+        var clearAd = null ;
+        clearAd = setInterval(function(){
+            var obj = $('[href="http://www.51.la/?19035878"]') ;
+            if(obj.length > 0){
+                obj.hide();
+                clearInterval(clearAd);
+            }
+        },10);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!--:
+	layout("/common/_layout.html" , {title : '小说分类' , page:'novel'}){
+-->
+
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">${isEmpty(c) ? '新发布小说' : '修改小说信息'}</div>
+
+        <div class="panel-body">
+
+            <form method="post">
+
+                <div class="form-horizontal">
+                    <div class="clearfix">
+                        <div class="col-lg-2 text-center">
+                            <div style="margin: 7px 0;">
+                                <label>封面图片</label>
+                                <div class="fz12 text-muted">推荐尺寸：宽240*高336</div>
+                            </div>
+
+                            <div class="uploader-all">
+                                <div class="uploadPic">
+                                    <div id="uploadFirst"  style="position: absolute;"></div>
+                                </div>
+
+                                <a href="javascript:;">
+                                    <img src="${isEmpty(c.pic) ? ctx + '/images/addPic.png' : c.pic }" alt="" style="max-width: 120px;"/>
+                                </a>
+                                <input type="hidden" name="e.pic" placeholder="封面图片" value="${c.pic!}"/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-10 clearfix">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                                <label class="col-lg-4 control-label">小说名称</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="e.nName" data-empty="true" value="${c.nName!}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                                <label class="col-lg-4 control-label">小说作者</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" data-max="10" data-min="2" name="e.author" value="${c.author!('佚名')}" >
+                                </div>
+                            </div>
+
+
+
+                            <div class="modal fade" id="classifyList">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title">
+                                                选择小说分类
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="panel-group" id="classifyGroup">
+
+                                                <!--:  for( a in list ){-->
+
+                                                <!--:if( isEmpty(a.parentId) ){-->
+
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="panel-title clearfix">
+                                                            <a class="header" data-toggle="collapse" href="#${a.id}">
+                                                                ${a.cName!}
+                                                            </a>
+                                                            <div class="pull-right">
+                                                                <a href="javascript:;" data-cmd="chooseClassify" data-id="${a.id}" data-name="${a.cName}" class="btn btn-default btn-sm ">
+                                                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                                                    确认选择
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--: if(a.childrenNum > 0){ -->
+                                                    <div id="${a.id}" class="panel-collapse collapse in">
+                                                        <ul class="list-group list-group-sec">
+                                                            <!--:for( b in list){-->
+                                                            <!--:if(b.parentId == a.id ){-->
+                                                            <li class="list-group-item clearfix">
+                                                                <a class="header" data-toggle="collapse" href="#${b.id}">
+                                                                    <strong>${b.orderNum}. ${b.cName}</strong>
+                                                                </a>
+                                                                <div class="pull-right">
+                                                                    <a href="javascript:;" data-cmd="chooseClassify" data-id="${b.id}" data-name="${b.cName}" class="btn btn-default btn-sm ">
+                                                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                                                        确认选择
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+                                                            <!--:}-->
+                                                            <!--:}-->
+                                                        </ul>
+                                                    </div>
+                                                    <!--: } -->
+
+
+                                                </div>
+
+                                                <!--:}-->
+
+                                                <!--: }-->
+
+
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-4  col-md-4 col-sm-6">
+                                <label class="col-lg-4 control-label">小说分类</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" value="${c.cName!}" id="classifyName" class="form-control" readonly/>
+                                        <div class="input-group-addon">
+                                            <a href="#classifyList" data-toggle="modal" class="glyphicon glyphicon-list"></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                                <label class="col-lg-4 control-label">免费章节</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="number" data-type="int" name="e.freeNum" value="${c.freeNum!(10)}" class="form-control" placeholder=""/>
+                                        <div class="input-group-addon">
+                                            章
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-10 col-md-12 col-sm-12">
+                                <label class="col-lg-1 control-label">简介</label>
+                                <div class="col-sm-11">
+                                    <textarea name="e.desc" rows="10" class="form-control" style="margin-left: 29px;">${c.desc!}</textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                                <div class="col-lg-8 col-lg-offset-4">
+                                    <input type="hidden" name="e.id" data-empty="true" value="${c.id!}"/>
+                                    <input type="hidden" name="e.classifyId" value="${c.classifyId!}"/>
+                                    <!--: if(isEmpty(c)){  -->
+                                    <a href="/admin/save/novel" data-submit="true"  data-success="saveNovelSuccess" class="btn btn-danger">确认发布</a>
+                                    <!--: }else{  -->
+                                    <a href="/admin/save/novel" data-submit="true" data-redirect="/admin/list/novel" class="btn btn-success">确认修改</a>
+                                    <!--: }  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!--:}-->
+
+<script type="text/javascript">
+    document.write("<script type='text/javascript' src='${ctx}/js/jquery.uploadify.min.js?" + new Date()+ "'></s" + "cript>");
+    $(function() {
+        var uploader = $('#uploadFirst') ;
+        uploader.uploadify({
+            'progressData' : 'speed',
+            'height' : 168,
+            'width' : 120,
+            'swf' : '${ctx}/js/uploadify.swf',
+            'uploader' : '${ctx}/admin/save/pic',
+            'removeTimeout' : 3,
+            'fileTypeExts' : '*.gif; *.jpg; *.png;*.jpeg;',
+            'method' : 'post',
+            'fileObjName' : 'upfile' ,
+            'buttonClass' : "btn btn-default fileinput-button",
+            'buttonText' : '',
+            'onUploadSuccess' : function(file, data, response) {//成功完成文件上传时触发一次
+                var url = jQuery.parseJSON(data).url ;
+                var parents = $('.uploader-all');
+                parents.find('img').attr('src',url);
+                parents.find('input').val(url);
+            },
+            'onUploadProgress' : function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+
+            },
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                alert('文件： ' + file.name + ' 格式错误，系统无法读取 ');
+            }
+        });
+    });
+
+    $('[data-cmd="chooseClassify"]').on('click',function(){
+        var ts = $(this) ;
+        var id = ts.data('id');
+        $('input[name="e.classifyId"]').val(id);
+        $('#classifyName').val(ts.data('name'));
+        $('#classifyList').modal('hide');
+    });
+</script>
+

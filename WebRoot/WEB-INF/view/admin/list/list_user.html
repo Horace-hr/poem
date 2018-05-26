@@ -1,0 +1,129 @@
+<!--:
+	layout("/common/_layout.html" , {title : '用户列表' , page:'user'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">筛选</div>
+
+        <div class="panel-body">
+
+            <form action="${ctx}/admin/list/user" id="myform" method="post">
+
+                <div class="form-horizontal">
+
+                    <div class="row">
+
+                        <div class="form-group col-lg-4 ">
+                            <label class="col-lg-4 control-label">用户昵称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="nickname" value="${map.nickname!}">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-4 ">
+                            <label class="col-lg-4 control-label">渠道名称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="cName" value="${map.cName!}">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-lg-4 text-right">
+                            <input type="hidden" name="pageNum" id="pageNum">
+                            <a href="javascript:;" data-cmd="submitForm" class="btn btn-default">
+                                筛选
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            用户列表
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>用户信息</th>
+                    <th>地区</th>
+                    <th>来源渠道</th>
+                    <th>书币</th>
+                    <th>积分</th>
+                    <th>消费金额</th>
+                    <th style="width: 160px;">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:  for( x in page.list ){-->
+                <tr class="quote-list ${x.sex == '1' ? 'text-success'} ${x.sex == '2' ? 'text-red'} ">
+                    <td>
+                        <img src="${isEmpty(x.photo) ? '/images/userPic.png' : x.photo }" class="userPhoto"/>
+                        <div class="fz12 text-muted">${x.nickname}</div>
+                    </td>
+
+                    <td>
+                        ${x.province!} ${x.city!}
+                    </td>
+
+                    <td>
+                        ${x.cName!}
+                    </td>
+                    <td>
+                        <b class="fz16">${x.coins}</b>
+                    </td>
+                    <td>
+                        ${x.score!(0)}
+                    </td>
+                    <td class="${x.rechargeAmount!(0) > 0 ? 'text-success'}">
+                        ${x.rechargeAmount!(0)*0.01,"0.00"} 元
+                    </td>
+                    <td style="position: relative;">
+                        <a href="/admin/list/history?id=${x.id}" class="btn btn-default btn-sm">
+                            阅读记录
+                        </a>
+                        <a href="/admin/list/recharge?userId=${x.id}"  class="btn btn-default btn-sm">
+                            充值记录
+                        </a>
+                    </td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+            <!--: if(page.totalRow > page.pageSize){ -->
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <!--:
+                        include("/common/_page.html",{
+                            uri : ctx+'/list/user',
+                            page : page
+                        }){}
+                     -->
+                </div>
+            </div>
+            <!--: } -->
+
+        </div>
+    </div>
+
+
+</div>
+
+<!--:}-->

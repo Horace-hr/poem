@@ -1,0 +1,173 @@
+<!--:
+	layout("/common/_layout.html" , {title : '推广管理' , page:'channel'}){
+-->
+
+<div class="container">
+
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        有两种方式可以生成渠道专属推广链接：
+        <br/>
+        1.点击新增渠道，录入渠道信息后，自动生成渠道专属推广链接。
+        <br/>
+        2.支持自定义渠道链接，请先复制任意章节的链接后，在链接上新增参数：<b>&qd=</b> ，在等号后自定义渠道的id即可。例：<b>&qd=1</b>
+        <br/>
+        <br/>
+        默认渠道推广章节页面底部显示公众号信息，如需不显示，请在渠道推广链接后增加 <b>-0</b> 参数，例：
+        <br/>
+        显示公众号信息的推广链接：${ctx}/novel?params=1-e9fa771a26674df0827f7792e6756d7c&page=chapterInfo&qd=123
+        <br/>
+        不显示公众号信息的推广链接：${ctx}/novel?params=1-e9fa771a26674df0827f7792e6756d7c&page=chapterInfo&qd=123<b>-0</b>
+
+    </div>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">筛选</div>
+
+        <div class="panel-body">
+
+            <form action="${ctx}/admin/list/channel" id="myform" method="post">
+
+                <div class="form-horizontal">
+
+                    <div class="row">
+
+                        <div class="form-group col-lg-4">
+                            <label class="col-lg-4 control-label">渠道名称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="cName" value="${map.cName!}">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-lg-8">
+                            <input type="hidden" name="pageNum" id="pageNum">
+                            <a href="javascript:;" data-cmd="submitForm" class="btn btn-default">
+                                筛选
+                            </a>
+                            <a href="${ctx}/admin/info/channel" class="btn btn-danger pull-right">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                                新增渠道
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            渠道列表
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th style="width: 160px;">渠道名称</th>
+                    <th style="width: 90px;">添加时间</th>
+                    <th>推广链接</th>
+                    <th style="width:240px">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:  for( x in page.list ){-->
+                <tr class="quote-list">
+                    <td>
+                        ${x.cName}
+                    </td>
+                    <td>
+                        ${x.addTime,'yyyy-MM-dd'}
+                    </td>
+
+                    <td>
+                        ${ctx}/novel?params=${x.number}-${x.novelId}&page=chapterInfo&qd=${x.id}
+                    </td>
+
+
+                    <td style="position: relative;">
+                        <a href="javascript:;"  data-clipboard-text="${ctx}/novel?params=${x.number}-${x.novelId}&page=chapterInfo&qd=${x.id}"
+                           class="btn btn-success btn-sm copyBtn">
+                            复制推广链接
+                        </a>
+                        <div class="tooltip fade top" style="top: -22px;left: 23px;">
+                            <div class="tooltip-arrow"></div>
+                            <div class="tooltip-inner">复制成功</div>
+                        </div>
+                        <a href="${ctx}/admin/info/channel?id=${x.id}" class="btn btn-default btn-sm ">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            修改
+                        </a>
+                        <a href="#delete" data-toggle="modal" data-url="/admin/delete/channel?id=${x.id}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            删除
+                        </a>
+                    </td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+            <!--: if(page.totalRow > page.pageSize){ -->
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <!--:
+                        include("/common/_page.html",{
+                            uri : ctx+'/list/channel',
+                            page : page
+                        }){}
+                     -->
+                </div>
+            </div>
+            <!--: } -->
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal fade" id="delete">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">警告</h4>
+            </div>
+            <div class="modal-body">
+                删除后无法恢复，确认删除该渠道？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--:}-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+<script>
+    var clipboard = new Clipboard('.copyBtn');
+    clipboard.on('success', function(e) {
+        $(e.trigger).next().addClass('in');
+        setTimeout(function () {
+            $(e.trigger).next().removeClass('in');
+        },2000);
+    });
+</script>

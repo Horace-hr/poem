@@ -1,0 +1,76 @@
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_admin` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_bloger_qd` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_buy_record` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_channel` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_chapter` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_classify` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_comment` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_config` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_giving` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_history` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_novel` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_original_poem` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_poem` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_poem_paragraph` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_property` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_readtimes` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_recharge` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_sign_in` where 1 = 2 
+ {executed in 0 msec}
+
+2018-03-17 17:26:10
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select * from `t_statistic` where 1 = 2 
+ {executed in 0 msec}

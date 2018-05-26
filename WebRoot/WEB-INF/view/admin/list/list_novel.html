@@ -1,0 +1,396 @@
+<!--:
+	layout("/common/_layout.html" , {title : '小说分类' , page:'novel'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">筛选</div>
+
+        <div class="panel-body">
+
+            <form action="${ctx}/admin/list/novel" id="myform" method="post">
+
+                <div class="form-horizontal clearfix">
+
+                    <div class="form-group col-lg-4 ">
+                        <label class="col-lg-4 control-label">排序方式</label>
+                        <div class="col-sm-8">
+                            <select name="orderType" class="form-control">
+                                <option value="0">按最近更新时间</option>
+                                <option value="1" ${map.orderType == '1' ? 'selected'}>按读书币收入</option>
+                                <option value="2" ${map.orderType == '2' ? 'selected'}>按打赏收入</option>
+                                <option value="3" ${map.orderType == '3' ? 'selected'}>按读书币价格</option>
+                                <option value="4" ${map.orderType == '4' ? 'selected'}>按免费章节数</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 ">
+                        <label class="col-lg-4 control-label">完本状态</label>
+                        <div class="col-sm-8">
+                            <select name="isEnd" class="form-control">
+                                <option value="99">全部</option>
+                                <option value="1" ${map.isEnd == '1' ? 'selected'}>已完本</option>
+                                <option value="0" ${map.isEnd == '0' ? 'selected'}>未完本</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 ">
+                        <label class="col-lg-4 control-label">推荐榜</label>
+                        <div class="col-sm-8">
+                            <select name="freeBooks" class="form-control">
+                                <option value="99">全部</option>
+                                <option value="1" ${map.freeBooks == '1' ? 'selected'}>新书推荐榜</option>
+                                <option value="2" ${map.freeBooks == '2' ? 'selected'}>主编推荐榜</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-lg-4 ">
+                        <label class="col-lg-4 control-label">书名</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="hidden" name="pageNum" id="pageNum">
+                                <input type="text" class="form-control" name="nName" value="${map.nName!}">
+                                <a href="javascript:;" data-cmd="submitForm" class="input-group-addon">
+                                    查找
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 "></div>
+
+                    <div class="form-group col-lg-4 ">
+                        <label class="col-lg-4 control-label"></label>
+                        <div class="col-sm-8 text-right">
+                            <a href="${ctx}/admin/info/novel" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                发布小说
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            小说列表
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover uploadChapter">
+                <thead>
+                <tr>
+                    <th style="width: 80px;">封面图片</th>
+                    <th style="width:300px" >基本信息</th>
+                    <th>费用信息</th>
+                    <th>收入</th>
+                    <th style="width:330px">操作</th>
+                </tr>
+                </thead>
+                <tbody class="freeBooksList">
+                <!--:  for( x in page.list ){-->
+                <tr style="position: relative;top: 0;">
+                    <td>
+                        <a href="${ctx}/admin/list/chapter?novelId=${x.id}" >
+                            <img src="${x.pic}" alt="" width="80"/>
+                        </a>
+                    </td>
+                    <td class="line">
+
+                        <strong class="${x.isEnd? 'text-danger' : 'text-success'}">
+                            ${x.nName!}
+                            <span class="fz12">${x.isEnd ? '[已完本]' : '[连载中]'}</span>
+                        </strong>
+                        <div class="text-muted fz12">
+                            ${x.author!}
+                        </div>
+                        <hr/>
+                        ${x.cName}
+
+                        <!--: if(map.freeBooks == '1' ){ -->
+                        <a href="/admin/update/exchangePos" data-cmd="resetPos" data-id="${x.id}" data-type="up" class="setUp" title="排序：向上移动">
+                            <span class="glyphicon glyphicon-arrow-up"></span>
+                        </a>
+                        <a href="/admin/update/exchangePos" data-cmd="resetPos"  data-id="${x.id}" data-type="down" class="setDown" title="排序：向下移动">
+                            <span class="glyphicon glyphicon-arrow-down"></span>
+                        </a>
+                        <!--: }else if( map.freeBooks == '2' ){ -->
+                        <a href="/admin/update/exchangeRecom" data-cmd="resetPos" data-id="${x.id}" data-type="up" class="setUp" title="排序：向上移动">
+                            <span class="glyphicon glyphicon-arrow-up"></span>
+                        </a>
+                        <a href="/admin/update/exchangeRecom" data-cmd="resetPos"  data-id="${x.id}" data-type="down" class="setDown" title="排序：向下移动">
+                            <span class="glyphicon glyphicon-arrow-down"></span>
+                        </a>
+                        <!--:}-->
+
+
+                        <div class="text-muted fz12">
+                            <!--: if(isNotEmpty(x.updateTime)){ -->
+                            更新： ${x.updateTime , 'yyyy-MM-dd HH:mm'}
+                            <!--: }else{ -->
+                            暂未发布
+                            <!--: } -->
+                        </div>
+
+
+                    </td>
+                    <td>
+                        ${x.freeNum} 章 / 总 <a href="${ctx}/admin/list/chapter?novelId=${x.id}" class="btn-link">${x.lChapterNum}</a> 章
+                        <div class="text-muted fz12">
+                            免费
+                        </div>
+                        <hr/>
+                        
+                    </td>
+
+                    <td>
+                        ${x.income} 书币
+                        <div class="text-muted fz12">
+                            书币
+                        </div>
+                        <hr/>
+                        ${x.exIncome*0.01 , '0.00'} 元
+                        <div class="text-muted fz12">
+                            打赏
+                        </div>
+                    </td>
+                    <td class="">
+
+                        <a href="${ctx}/admin/info/novel?id=${x.id}" class="btn btn-default btn-sm ">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            修改
+                        </a>
+                        <a href="#delete" data-toggle="modal" data-url="/admin/delete/novel?id=${x.id}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            删除
+                        </a>
+
+                        <!--: if(!x.isEnd){ -->
+                        <a href="${ctx}/admin/info/chapter?novelId=${x.id}"  class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            新增章节
+                        </a>
+                        <!--: } -->
+
+                        <hr style="margin: 16px 0;"/>
+
+                        <!--: if(x.recommendNum > 10 ){ -->
+                        <a href="#cancelRecommend" data-toggle="modal" data-url="/admin/update/novelRecommend?id=${x.id}&recommend=0" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-fire"></span>
+                            取消推荐
+                        </a>
+                        <!--: }else{ -->
+                        <a href="#recommend" data-toggle="modal" data-url="/admin/update/novelRecommend?id=${x.id}&recommend=10" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-fire"></span>
+                            主编推荐
+                        </a>
+                        <!--: } -->
+
+                        <!--: if(!x.isEnd){ -->
+                        <a href="#complete" data-toggle="modal" data-url="/admin/update/novelComplete?id=${x.id}" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-ok-circle"></span>
+                            已完本
+                        </a>
+                        <!--: }else{ -->
+                        <a href="javascript:;" class="btn disabled btn-default btn-sm">
+                            <span class="glyphicon glyphicon-ok-circle"></span>
+                            已完本
+                        </a>
+                        <!--:}-->
+
+                        <!--: if(x.orderNum > 10 ){ -->
+                        <a href="#cancelFreeBooks" data-toggle="modal" data-url="/admin/update/freeBooks?id=${x.id}" class="btn btn-default btn-sm">
+                            移出新书榜
+                        </a>
+                        <!--: }else{ -->
+                        <a href="#freeBooks" data-toggle="modal" data-url="/admin/update/freeBooks?id=${x.id}" class="btn btn-success btn-sm">
+                            免费新书榜
+                        </a>
+                        <!--: } -->
+
+                    </td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+            <!--: if(page.totalRow > page.pageSize){ -->
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <!--:
+                        include("/common/_page.html",{
+                            uri : ctx+'/list/channel',
+                            page : page
+                        }){}
+                     -->
+                </div>
+            </div>
+            <!--: } -->
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal fade" id="cancelFreeBooks">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                确认将该小说从免费新书榜移出吗？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认移出</a>
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-default">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="freeBooks">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                确认将该小说加入到免费新书榜吗？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认加入</a>
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-default">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cancelRecommend">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                确认将该小说从主编推荐栏目移除吗？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认取消推荐</a>
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-default">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="recommend">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                确认该小说加入到主编推荐栏目吗？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认推荐</a>
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-default">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="complete">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                完本后无法再进行更新，确认该小说已经完本了吗？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认完本</a>
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-default">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">警告</h4>
+            </div>
+            <div class="modal-body">
+                删除后无法恢复，确认删除该小说？
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" data-send="true" data-dismiss="modal" class="btn btn-danger">确认删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--:}-->
+
+<script>
+    $('[data-cmd="resetPos" ]').on('click',function(e){
+        e.preventDefault();
+        var ts = $(this) ;
+        var url = ts.attr('href') ;
+        var type =ts.data('type');
+        var parents = ts.parents('tr') ;
+        var jsons ;
+        if(type == 'up'){
+            var prev = parents.prev();
+            if(prev.length == 0){
+                return false ;
+            }
+            jsons = {
+               id :  ts.data('id') ,
+               exId :  prev.find('a.setDown').data('id')
+            } ;
+            $.post( host + url , jsons , function (result) {
+                parents.insertBefore(prev);
+            });
+        }else{
+            var next = parents.next();
+            if(next.length == 0){
+                return false ;
+            }
+            jsons = {
+                id :  ts.data('id') ,
+                exId :  next.find('a.setUp').data('id')
+            } ;
+            $.post( host + url , jsons , function (result) {
+                parents.insertAfter(next);
+            });
+        }
+    });
+</script>
+

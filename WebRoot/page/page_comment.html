@@ -1,0 +1,20 @@
+<div class="page" data-title="写评论" data-preload="novelInfo">
+
+    <div class="topBar">
+        <a href="novelInfo" data-action="switch" data-params="N.params.L" class="back">返回</a>
+    </div>
+
+    <form class="panel panel-detail mt10">
+        <div class="panel-header">
+            评论内容
+        </div>
+        <div class="panel-body">
+            <textarea name="x.content" rows="5" class="form-control"></textarea>
+        </div>
+        <div class="panel-footer">
+            <input type="hidden" name="x.novelId" value="N.params.L">
+            <a href="/save/comment" data-submit="true" data-cmd="dealComment" class="btns btn-default btn-block">发表评论</a>
+        </div>
+    </form>
+
+</div>

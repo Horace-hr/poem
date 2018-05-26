@@ -1,0 +1,104 @@
+<div class="page index" data-menu="1"
+	data-preload="userCenter,classify,recharge">
+
+	<!-- <div class="text-base base-home" data-unload="refresh"
+		data-cmd="info_history">
+		<a href="chapterInfo" data-action="switch"
+			data-params="N.number.L-N.novelId.L"> <span class="font">&#xe61d;</span>
+			上次阅读：《N.nName.L》 第N.zNum.L章 N.title.L
+		</a>
+	</div> -->
+
+
+	<form action="" style="padding-bottom: 0; padding-top: 10px;">
+
+		<div class="panel panel-detail panel-search">
+			<div class="panel-header">
+				<table class="single-line-form">
+					<tr>
+						<td><input name="nName" type="text" placeholder="输入诗词名或作者搜索"
+							class="text-border vm" /></td>
+						<td width="5"></td>
+						<td width="70"><a href="novelList" data-action="search"
+							data-name="nName" class="btn btn-auto btn-blue vm">搜索</a></td>
+					</tr>
+				</table>
+			</div>
+			<div class="panel-body">
+				<div class="linkGroup linkGroup-novel" data-unload="once"
+					data-cmd="page_novel" data-params='pageSize:6' data-cut="recom">
+					<a href="novelInfo" data-action="switch" data-params="N.id.L"
+						class="item">N.title.L</a>
+				</div>
+			</div>
+			<a href="javascript:;" data-cmd="getNovelList" data-page="2"
+				class="panel-footer text-center"> 换一批 </a>
+		</div>
+
+	</form>
+
+
+	<div class="container">
+
+		<div class="mod block blue recommend recommend-panel">
+			<div class="hd" boxid="ruochuMobileIndexRemen">
+				<h4>智能推荐</h4>
+			</div>
+			<div class="bd">
+
+				<ul class="list" data-unload="once" data-cmd="page_novel" data-params='pageSize:7~~isRecommend:10' data-cut="recom">
+					<li><a href="novelInfo" data-action="switch" data-params="N.id.L" class="column-2">
+							<div class="left pic">
+								<img src="" data-loading="N.picture.L?imageView2/1/w/240/h/336"
+									alt="" />
+							</div>
+							<div class="right info">
+								<h4>N.title.L</h4>
+								<h6>N.author.L</h6>
+								<span>&nbsp&nbsp</span>
+								<div class="summary">
+									【摘要】&nbsp&nbsp纳兰性德的这首拟作是借用汉唐典故而抒发“闺怨”之情。用“决绝”这个标题，很可能就是写与初恋情人的绝交这样一个场景的。这首词确实也是模拟被抛弃的女性的口吻来写的......
+								</div>
+							</div>
+					</a>
+
+						 <div class="column-1">
+                            <span>[N.cName.L]</span>
+                            <a href="novelInfo" data-action="switch" data-params="N.id.L">N.title.L</a>
+                        </div>
+
+				</ul>
+
+			</div>
+		</div>
+
+	    <div class="mod block blue column-list" >
+			<div class="hd">
+				<h4>聆听诗韵</h4>
+			</div>
+			<div class="bd">
+				<a href="http://www.programme.pro/poemAudio/index.html">
+                    <img src="/img/audioBag.jpg" data-loading="/img/audioBag.jpg?imageView2/1/w/240/h/336"  alt=""/>
+                </a>
+			</div>	
+			<div class="name"></div>
+		</div>
+		
+		<div class="mod block yellow column-list">
+            <div class="hd">
+                <h4>飞花令游戏</h4>
+            </div>
+            <div class="bd">
+                    <img src="/img/gameBag.jpg" data-loading="/img/audioBag.jpg?imageView2/1/w/240/h/336"  alt=""/>
+            </div>
+            <span></span>
+            <div class="name">
+				<p style="font-size:14px;text-align:center" >正在研发中，敬请期待哦!</p>
+			</div>
+            
+        </div>
+		
+		
+		
+	</div>
+</div>

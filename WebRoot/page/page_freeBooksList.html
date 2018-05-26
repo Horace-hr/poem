@@ -1,0 +1,22 @@
+<div class="page" data-title="免费新书榜" data-preload="rankingList" data-menu="5">
+    <div class="linkGroup linkGroup-tabs">
+        <a href="rankingList" data-action="switch" class="item">本周人气榜</a>
+        <a href="freeBooksList" data-action="switch" class="item cur">免费新书榜</a>
+    </div>
+
+    <div class="novelList" data-unload="once" data-cmd="page_freeBooks">
+
+        <a href="novelInfo" data-action="switch" data-params="N.id.L" class="item">
+            <div class="item-left">
+                <img src="" data-loading="N.pic.L" alt=""/>
+            </div>
+            <div class="item-right">
+                <div class="novelTitle">N.nName.L</div>
+                <div class="novelDesc">
+                    N.desc.L
+                </div>
+            </div>
+        </a>
+
+    </div>
+</div>

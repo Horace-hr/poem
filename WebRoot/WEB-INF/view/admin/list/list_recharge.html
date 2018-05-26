@@ -1,0 +1,113 @@
+<!--:
+	layout("/common/_layout.html" , {title : '充值记录' , page:'recharge'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">筛选</div>
+
+        <div class="panel-body">
+
+            <form action="${ctx}/admin/list/recharge" id="myform" method="post">
+
+                <div class="form-horizontal">
+
+                    <div class="row">
+
+                        <div class="form-group col-lg-4 col-md-4 ">
+                            <label class="col-lg-4 control-label">用户昵称</label>
+                            <div class="col-lg-8 col-md-8">
+                                <input type="text" class="form-control" name="nickname" value="${map.nickname!}">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-1 col-md-1 text-right">
+                            <input type="hidden" name="pageNum" id="pageNum">
+                            <a href="javascript:;" data-cmd="submitForm" class="btn btn-danger">
+                                筛选
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            充值记录列表
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>时间</th>
+                    <th>用户昵称</th>
+                    <th>充值金额</th>
+                    <th>获得/赠送书币</th>
+                    <th>书币余额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:  for( x in page.list ){-->
+                <tr class="quote-list">
+                    <td>
+
+                        ${x.time,"yyyy-MM-dd HH:mm"}
+                    </td>
+                    <td>
+                        ${x.nickname}
+                    </td>
+
+                    <td class="text-success">
+                        <!--: if(x.type ==1){ -->
+                        <span class="vip">充值</span>
+                        <!--: }else{ -->
+                        <span class="vip vip-free">打赏</span>
+                        <!--: } -->
+                        ${x.amount*0.01,"0.00"}
+                    </td>
+
+                    <td>
+                        ${x.type ==1 ? x.gets}
+                        + ${x.givings}
+                    </td>
+                    <td>
+                        ${x.staticBalance}
+                    </td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+            <!--: if(page.totalRow > page.pageSize){ -->
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <!--:
+                        include("/common/_page.html",{
+                            uri : ctx+'/list/recharge',
+                            page : page
+                        }){}
+                     -->
+                </div>
+            </div>
+            <!--: } -->
+
+        </div>
+    </div>
+
+
+</div>
+
+<!--:}-->
+

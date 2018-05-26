@@ -1,0 +1,40 @@
+<div class="page" data-title="VIP付费阅读" data-preload="chapterInfo,chapterList" data-clone="true">
+    <div class="topBar">
+        <a href="home" data-action="switch" class="back">返回</a>
+    </div>
+
+    <form action="">
+
+        <div class="panel panel-detail mt10" >
+            <div class="chapterInfo" data-unload="once" data-cmd="page_chapters" data-params="N.params.L-1">
+                <div class="panel-header">
+                    第N.zNum.L章 &nbsp; N.title.L
+                </div>
+                <div class="panel-body">
+                    <div class="chapterInfo">
+                        <div class="item">发布时间：N.time.L</div>
+                        <div class="item">章节字数：N.count.L 字</div>
+                        <div class="item">本章价格：<span class="text-red">N.price.L</span> 书币</div>
+                        <div class="text-muted fz12">提示：已购买的章节无需重复购买。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-detail" data-unload="once" data-cmd="info_user" data-params="needPay">
+            <div class="panel-body coins text-center">
+                余额：N.coins.L 金币
+            </div>
+            <div class="panel-footer" >
+                <input type="hidden" name="chapterId" value="N.params.L">
+                <if data-key="coins" data-value="0">
+                    <a href="recharge" data-action="switch" data-params="N.params.L" class="btns btn-success btn-block">去充值</a>
+                </if>
+                <else>
+                    <a href="/save/buyRecord" data-submit="true" data-cmd="buyRecordSuccess" data-params="N.params.L" class="btns btn-default btn-block">确认购买</a>
+                </else>
+            </div>
+        </div>
+
+    </form>
+</div>

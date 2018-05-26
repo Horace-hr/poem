@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>${title!}</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${ctx}/css/admin.css?v=${version!}">
+	
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body >
+<input type="hidden" id="host" value="${ctx}"/>
+<!-- 导航菜单 s  -->
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="javascript:;" style="padding-top: 6px;">
+        <img src="${ctx}/images/logos.png" alt="" style="height: 40px;"/>
+      </a>
+    </div>
+
+    <!--:if(page != 'login'){-->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="${page == 'statistic' ? 'active'}"><a href="${ctx}/admin/info/statistic">数据统计</a></li>
+        <li class="${page == 'classify' ? 'active'}"><a href="${ctx}/admin/list/classify">小说分类</a></li>
+        <li class="${page == 'recharge' ? 'active'}"><a href="${ctx}/admin/list/recharge">充值记录</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="${ctx}/cangshuge/quit">退出</a></li>
+      </ul>
+    </div>
+    <!--:}-->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- 导航菜单 e  -->
+
+${layoutContent}
+
+
+<script src="${ctx}/js/admin_form.js"></script>
+<script src="${ctx}/js/admin_main.js"></script>
+</body>
+</html>

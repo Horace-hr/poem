@@ -1,0 +1,63 @@
+<!--:
+	layout("/common/_layout.html" , {title : '阅读记录' , page:'user'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            阅读记录列表
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>小说</th>
+                    <th>章节</th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:  for( x in page.list ){-->
+                <tr class="quote-list">
+                    <td>
+                        <img src="${x.pic}" class="" width="80"/>
+                    </td>
+
+                    <td>
+                        《${x.nName}》 第${x.chapterNum}章 ${x.title}
+                    </td>
+
+                    <td>
+                        ${x.time , "yyyy-MM-dd HH:mm"}
+                    </td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+            <!--: if(page.totalRow > page.pageSize){ -->
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <!--:
+                        include("/common/_page.html",{
+                            uri : ctx+'/list/history',
+                            page : page
+                        }){}
+                     -->
+                </div>
+            </div>
+            <!--: } -->
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<!--:}-->

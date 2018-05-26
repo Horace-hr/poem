@@ -1,0 +1,23 @@
+.panel_qr {
+    background-color: #b6e3f6;
+    border: 1px solid #a5d5e9;
+    margin-left: 15px;
+    margin-right: 15px;
+    -webkit-box-shadow: inset 0 0 36px 2px #a5d5e9;
+    -moz-box-shadow: inset 0 0 36px 2px #a5d5e9;
+    box-shadow: inset 0 0 36px 2px #a5d5e9;
+    color: #13668b;
+    margin-bottom: 15px;
+}
+.panel_qr .noQd {
+   display:none!important;
+}
+
+.panel_qr .panel-footer {
+    border-bottom: 1px solid #a5d5e9;
+    padding: 10px 15px;
+}
+.panel_qr .panel-body {
+    padding: 10px 15px 20px;
+    text-align: center;
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/css/loader.min.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/css/mobile.min.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/admin_form.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/admin_main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/common_upload.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/loader.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/niep-method.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/niep.min.js" charset="UTF-8" />
+  </component>
+</project>

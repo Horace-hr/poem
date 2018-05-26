@@ -1,0 +1,96 @@
+<div class="page" data-title="诗词列表" data-preload="home,userCenter,novelInfo" data-menu="2" data-clone="true">
+
+    <div class="cover">
+        <div class="container">
+
+            <form action="" style="padding-top: 0;padding-bottom: 10px;">
+
+                <div class="panel panel-detail panel-search panel-searchs">
+                    <div class="panel-header">
+                        <table class="single-line-form">
+                            <tr>
+                                <td>
+                                    <input name="nName" type="text" placeholder="输入诗词名或作者搜索" class="text-border vm"/>
+                                </td>
+                                <td width="30">
+                                    <a href="novelList" data-action="search" data-name="nName" class="btn btn-auto btn-blue vm">搜索</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="line line-novel">
+                            <a href="novelList" data-action="switch" data-base="classifyId:99" data-params="" data-cmd="collectParams" class="item">全部分类</a>
+                            <div class="item">
+                                <div class="linkGroup linkGroup-config" data-unload="static" data-cmd="list_classify">
+                                    <a href="novelList" data-action="switch" data-base="classifyId:N.id.L" data-cmd="collectParams" class="item ">N.cName.L</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="line line-novel">
+                            <a href="novelList" data-action="switch" data-base="count:99" data-params="" data-cmd="collectParams" class="item">诗词大家</a>
+                            <div class="item">
+                                <div class="linkGroup linkGroup-config">
+                                    <a href="novelList" data-action="switch" data-base="author:王维" data-cmd="collectParams" class="item">王维</a>
+                                    <a href="novelList" data-action="switch" data-base="author:李清照" data-cmd="collectParams"  class="item">李清照</a>
+                                    <a href="novelList" data-action="switch" data-base="author:柳永" data-cmd="collectParams" class="item">柳永</a>
+                                </div>
+                            </div>
+                        </div>
+
+                      <!--   <div class="line line-novel">
+                            <a href="novelList" data-action="switch" data-base="isEnd:99" data-cmd="collectParams" class="item">不限进度</a>
+                            <div class="item">
+                                <div class="linkGroup linkGroup-config">
+                                    <a href="novelList" data-action="switch" data-base="isEnd:1" data-cmd="collectParams" class="item">完本</a>
+                                    <a href="novelList" data-action="switch" data-base="isEnd:0" data-cmd="collectParams" class="item">连载</a>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        
+
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="panel panel-detail">
+
+                <div class="panel-header">
+                    <div class="left">
+                        <span class="font">&#xe608;</span>
+                        诗词列表
+                    </div>
+                </div>
+
+                <div data-unload="once" data-cmd="page_novel" >
+
+                    <div class="panel-body">
+                        <div class="mod detail">
+                            <a href="novelInfo" data-action="switch" data-params="N.id.L" class="bd column-2" >
+                                <div  class="left">
+                                    <img src="" data-loading='N.picture.L' width="80" alt="" />
+                                </div>
+                                <div class="right">
+                                    <div class="title">N.title.L</div>
+                                    <p class="info">
+                                        作者：N.author.L
+                                        <br />
+                                        朝代：N.dynasty.L
+                                    </p>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,113 @@
+<!--:
+	layout("/common/_layout.html" , {title : '渠道数据' , page:'channelStatistic'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">筛选</div>
+
+        <div class="panel-body">
+
+            <form action="${ctx}/admin/list/channelStatistic" id="myform" method="post">
+
+                <div class="form-horizontal">
+
+                    <div class="row">
+
+                        <div class="form-group col-lg-4 ">
+                            <label class="col-lg-4 control-label">日期</label>
+                            <div class="col-sm-8 col-lg-8">
+                                <div class="input-group">
+                                    <input type="date" name="startTime" value="${map.startTime!}" class="form-control" placeholder="起始日期"/>
+                                    <div class="input-group-addon">至</div>
+                                    <input type="date" name="endTime" value="${map.endTime!}" class="form-control" placeholder="截止日期"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-3 text-right">
+                            <input type="hidden" name="pageNum" id="pageNum">
+                            <a href="javascript:;" data-cmd="submitForm" class="btn btn-danger">
+                                查询
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            渠道数据统计
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>渠道名称</th>
+                    <th>充值金额</th>
+                    <th>充值用户</th>
+                    <th>注册人数</th>
+                    <th>PV</th>
+                    <th>推广点击量</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:  for( x in page.list ){-->
+                <tr class="quote-list">
+                    <td>
+                        ${x.cName}
+                    </td>
+
+                    <td class="text-success">
+                        ${x.income*0.01,"0.00"}
+                    </td>
+
+                    <td>
+                        ${x.rechargers}
+                    </td>
+                    <td>${x.registers}</td>
+                    <td>${x.pv}</td>
+                    <td>${x.clicks}</td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+            <!--: if(page.totalRow > page.pageSize){ -->
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <!--:
+                        include("/common/_page.html",{
+                            uri : ctx+'/list/channelStatistic',
+                            page : page
+                        }){}
+                     -->
+                </div>
+            </div>
+            <!--: } -->
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!--:}-->
+

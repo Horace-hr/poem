@@ -1,0 +1,32 @@
+<div class="page" data-title="签到领积分" data-preload="chapterInfo,chapterList">
+    <div class="topBar" style="border-bottom: 1px solid #147aa6;">
+        <a href="userCenter" data-action="switch" class="back">返回</a>
+        <a href="home" data-action="switch" class="back back-home font">&#xe61e;</a>
+    </div>
+
+    <form class="signIn" data-unload="once" data-cmd="info_signIn">
+
+        <div class="header">
+            <div class="pic">
+                <img src="" data-static="N.host.L/img/BrazilianCarnival.png" alt="" class="house">
+            </div>
+            <div class="overPlus">已连续签到N.days.L天</div>
+            <a href="/save/signIn" data-send="true" data-success="signInSuccess" class="date">今日签到 +N.dScore.L </a>
+        </div>
+
+        <div class="container">
+            <div class="parameter">
+                <div class="left">积分 : N.score.L</div>
+                <a href="/save/exchangeCoins" data-send="true" data-success="exchangeCoinsSuccess" class="right getCoins">兑换飞花币</a>
+            </div>
+
+            <div class="change">
+                <span class="bold">签到奖励积分 : </span>
+                <span class="text-base">10积分兑换1个飞花币。</span>
+                连续2天签到可获得2积分，连续3天签到可获得3积分，以此类推，最多连续7天签到获得7积分。累计积分不小于10时，开启积分兑换飞花币功能。
+            </div>
+        </div>
+
+
+    </form>
+</div>

@@ -1,0 +1,108 @@
+<!--:
+	layout("/common/_layout.html" , {title : '系统设置' , page:'system'}){
+-->
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">系统参数设置</div>
+
+        <div class="panel-body">
+
+
+
+                <div class="form-horizontal">
+
+
+
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <form class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label class="col-lg-4 col-md-4 control-label">千字价格</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <div class="input-group">
+                                        <input type="hidden" name="x.key" value="price"/>
+                                        <input type="number" name="x.value" class="form-control" value="${price.value!}" placeholder=""/>
+                                        <div class="input-group-addon">分/千字</div>
+                                    </div>
+                                </div>
+                                <a href="/admin/save/system" data-submit="true" data-success="saveConfigSuccess" class="btn btn-danger hide">
+                                    保存配置
+                                </a>
+                            </form>
+
+                            <form class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label class="col-lg-4 col-md-4 control-label">微信授权</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <input type="hidden" name="x.key" value="getOpenId"/>
+                                    <select name="x.value" class="form-control">
+                                        <option value="1" ${open.value == 1 ? 'selected'}>获取付费用户微信信息</option>
+                                        <option value="2" ${open.value == 2 ? 'selected'}>不获取付费用户微信信息</option>
+                                    </select>
+                                </div>
+                                <a href="/admin/save/system" data-submit="true" data-success="saveConfigSuccess" class="btn btn-danger hide">
+                                    保存配置
+                                </a>
+                            </form>
+
+                            <form class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label class="col-lg-4 col-md-4 control-label">计费模式</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <input type="hidden" name="x.key" value="devidedType"/>
+                                    <select name="x.value" class="form-control">
+                                        <option value="1" ${devidedType.value == 1 ? 'selected'}>网站增益模式</option>
+                                        <option value="2" ${devidedType.value == 2 ? 'selected'}>渠道增益模式</option>
+                                    </select>
+                                </div>
+                                <a href="/admin/save/system" data-submit="true" data-success="saveConfigSuccess" class="btn btn-danger hide">
+                                    保存配置
+                                </a>
+                            </form>
+
+
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-8 col-md-8 col-lg-offset-4 col-md-offset-4">
+                                    <a href="javascript:;" data-cmd="saveAll" class="btn btn-danger">
+                                        保存配置
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                1.保存章节时，会统计每一章节的价格，根据此处设置的千字价格，自动计算章节的价格。
+                                <br/>
+                                2.设置为“获取付费用户微信信息”时，已充值过的用户，进入个人中心时会获取用户的微信昵称、头像、性别等信息。
+                                <br/>
+                                3.网站增益模式时，只有用户从渠道绑定的小说页面充值时，才计入该渠道的充值业绩；渠道增益模式下，渠道推荐用户在网站内的所有充值，均算该渠道的充值业绩。
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!--:}-->
+
+<script>
+    $('[data-cmd="saveAll"]').on('click',function(){
+       $('[data-submit="true"]').each(function() {
+          $(this).click();
+       });
+    });
+</script>

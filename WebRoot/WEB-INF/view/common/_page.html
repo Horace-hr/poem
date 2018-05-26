@@ -1,0 +1,44 @@
+
+
+<!--:
+
+	// 这里可以加工，根据需要可以把提交表单的数据那过来，并且写在地址栏上。
+    var pageNumber = page.pageNumber;   // 当前页
+    var totalPage = page.totalPage;     // 总页数
+
+    var isStart = pageNumber == 1 ? true : false;
+	var isLast = pageNumber >= totalPage ? true : false;
+	var isOmission=0; //  是否显示省略号
+	
+	   print("<nav class='text-right'><ul class='pagination'  style='margin:0;'>");
+	   if(isStart){
+	        print("<li><a href='#' class='pageprv z-dis'>上一页</a></li>");
+	    }else{
+	        printf("<li><a href='javascript:;'  onclick='pageSubmit("+(pageNumber-1)+")' class='pageprv '>上一页</a></li>",uri);
+	    }
+        for(var i=1;i<=totalPage;i++){
+          if(i == pageNumber){
+             printf(" <li class='active'><a href='javascript:;' onclick='pageSubmit("+i+")' >"+i+"</a></li> ",uri);
+          }else if(i<3){
+             printf("<li><a href='javascript:;' onclick='pageSubmit("+i+")'>"+i+"</a></li>",uri);
+          }else if((pageNumber-i)<4&&(pageNumber-i)>-4){
+             printf("<li><a href='javascript:;' onclick='pageSubmit("+i+")'>"+i+"</a></li>",uri);
+          }else if(totalPage-i<3){
+             printf("<li><a href='javascript:;' onclick='pageSubmit("+i+")'>"+i+"</a></li>",uri);
+          }else{
+	          if(isOmission==0){
+	              print("<li><a>...</a></li>");
+	          }
+              isOmission=1; 
+          }
+        }         
+	   if(isLast){
+	        print("<li><a href='#' class='pagenxt z-dis'>下一页</a></li>");
+	    }else{
+	    	printf("<li><a href='javascript:;'  onclick='pageSubmit("+(pageNumber+1)+")' class='pagenxt '>下一页</a></li>",uri);
+	    }        
+                   
+     print("</ul></nav>");
+	
+	
+-->

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>${title!}</title>
+    
+    <link rel="stylesheet" href="${ctx}/css/mobile.css?v=${version!}">
+    <link rel="stylesheet" href="${ctx}/css/style.css?v=${version!}132135656">
+    <link rel="stylesheet" href="${ctx}/css/font.css?v=${version!}"/>
+
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<input type="hidden" id="host" value="${ctx}"/>
+
+${layoutContent}
+
+<script src="${ctx}/js/form_mobile.js?v=${version!}"></script>
+<script src="${ctx}/js/mobile.js?v=${version!}sd"></script>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/19035878.js"></script>
+<noscript>
+    <a href="http://www.51.la/?19035878" target="_blank">
+        <img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/19035878.asp" style="border:none;display: none;" />
+    </a>
+</noscript>
+<script>
+    $(function(){
+        var clearAd = null ;
+        clearAd = setInterval(function(){
+            var obj = $('[href="http://www.51.la/?19035878"]') ;
+            if(obj.length > 0){
+                obj.hide();
+                clearInterval(clearAd);
+            }
+        },10);
+    });
+</script>
+</body>
+</html>
+

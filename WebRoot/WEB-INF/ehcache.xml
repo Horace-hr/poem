@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false"
+	monitoring="autodetect" dynamicConfig="true">
+
+	<diskStore path="java.io.tmpdir" />
+
+	<defaultCache maxEntriesLocalHeap="10000" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="20" timeToLiveSeconds="60">
+	</defaultCache>
+
+	<!-- 缓存配置 -->
+	<cache name="userByName" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="userCount" maxElementsInMemory="2"
+		maxElementsOnDisk="2" eternal="true" overflowToDisk="true"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="classify" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="classifyList" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="classifyParent" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<!-- 3.12 Horace -->
+	<cache name="poem" maxElementsInMemory="10000" maxElementsOnDisk="10000"
+		eternal="false" overflowToDisk="true" timeToIdleSeconds="120"
+		timeToLiveSeconds="120" memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="pagePoem" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="pageNovel" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="novel" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+	
+	<cache name="poem" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="freeBooks" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="readTimes" maxElementsInMemory="30000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="maxReadTimes" maxElementsInMemory="30000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="chapter" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="poemParagraph" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="chapterNovel" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="channel" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="buyRecord" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="history" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="historyLastest" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="historyList" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="historyUsers" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="userInfo" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="pageComment" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="originalPoem" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="config" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="recharge" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="rechargeToday" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="signIn" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="giving" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="rechargeRecord" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+	<cache name="captcha" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="statistic" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+	<cache name="statisticInfo" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="viewUser" maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<!-- Sample cache named sampleCache1 This cache contains a maximum in memory 
+		of 10000 elements, and will expire an element if it is idle for more than 
+		5 minutes and lives for more than 10 minutes. If there are more than 10000 
+		elements it will overflow to the disk cache, which in this configuration 
+		will go to wherever java.io.tmp is defined on your system. On a standard 
+		Linux system this will be /tmp" -->
+	<cache name="sampleCache1" maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000" eternal="false" overflowToDisk="true"
+		diskSpoolBufferSizeMB="20" timeToIdleSeconds="300" timeToLiveSeconds="600"
+		memoryStoreEvictionPolicy="LFU" transactionalMode="off" />
+
+	<!-- Sample cache named sampleCache2 This cache has a maximum of 1000 elements 
+		in memory. There is no overflow to disk, so 1000 is also the maximum cache 
+		size. Note that when a cache is eternal, timeToLive and timeToIdle are not 
+		used and do not need to be specified. -->
+	<cache name="sampleCache2" maxEntriesLocalHeap="1000" eternal="true"
+		overflowToDisk="false" memoryStoreEvictionPolicy="FIFO" />
+
+	<!-- Sample cache named sampleCache3. This cache overflows to disk. The 
+		disk store is persistent between cache and VM restarts. The disk expiry thread 
+		interval is set to 10 minutes, overriding the default of 2 minutes. -->
+	<cache name="sampleCache3" maxEntriesLocalHeap="500" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="300" timeToLiveSeconds="600"
+		diskPersistent="true" diskExpiryThreadIntervalSeconds="1"
+		memoryStoreEvictionPolicy="LFU" />
+</ehcache>

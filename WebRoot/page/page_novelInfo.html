@@ -1,0 +1,121 @@
+<div class="page cover" data-title="诗词详情" data-preload="home,chapterInfo,chapterList" data-clone="true">
+
+    <div class="topBar topBar-search">
+        <a href="novelList" data-action="switch" class="back">返回</a>
+        <div class="searchGroup">
+            <input type="text" class="form-control" name="chapterTitle" onkeyup="searchChapter(this);" data-id="N.params.L" placeholder="输入章节标题搜索"/>
+            <a href="javascript:;" data-cmd="toSearchChapter" class="searchBtn font"></a>
+        </div>
+       
+    </div>
+
+    <div class="container">
+
+        <div class="novel-info" data-unload="once" data-cmd="info_novel" data-params="">
+
+            <div class="mod detail">
+
+                <div class="bd column-2">
+                    <div class="left">
+                        <img src="" data-loading="N.picture.L?imageView2/1/w/240/h/336" width="90" alt=""/>
+                    </div>
+                    <div class="right">
+                        <h2>N.title.L</h2>
+
+                        <p class="info">
+                            作者：<span class="name">N.author.L</span>
+                            <br/>
+                            分类：N.cName.L
+                            <br/>
+                            收藏：<span class="collect" data-times="N.collectNum.L">N.collectNum.L</span> 次
+                            <br/>
+                        </p>
+
+                    
+
+                    </div>
+                </div>
+
+                <div class="ft">
+                    <table class="control control-btn" width="100%">
+                        <tr>
+                            <td width="48%">
+                                <a href="poemParagraph" data-action="switch" data-params='1-N.id.L' class="read start">开始阅读</a>
+                            </td>
+                            <td width="4%">&nbsp;
+                            </td>
+                            <td width="48%">
+                                <a class="juhuang start" data-success="resetBtn" data-type="1"
+                                   href="/save/history?poemId=N.id.L&isFavorite=true" data-send="true">加入收藏</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>    
+                 
+        </div>
+
+        <div class="mod block column-list recommend recommend-panel">
+            <div class="hd" boxid="ruochuMobileCoverJingcai">
+                <h4>诗词推荐</h4>
+            </div>
+            <div class="bd">
+                <ul class="list" data-unload="once" data-cmd="page_novel" data-params='pageSize:7~~isRecommend:10' data-cut="recom">
+                    <li>
+                        <div class="column-2">
+                            <div class="left pic">
+                                <a href="novelInfo" data-action="switch" data-params="N.id.L">
+                                    <img src="" data-loading="N.picture.L?imageView2/1/w/240/h/336" alt=""/>
+                                </a>
+                            </div>
+                            <div class="right info">
+                                <h4>
+                                    <a href="novelInfo" data-action="switch" data-params="N.id.L">N.title.L</a>
+                                </h4>
+
+                                <div class="summary">
+                                   	【摘要】&nbsp&nbsp纳兰性德的这首拟作是借用汉唐典故而抒发“闺怨”之情。用“决绝”这个标题，很可能就是写与初恋情人的绝交这样一个场景的。这首词确实也是模拟被抛弃的女性的口吻来写的......
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column-1">
+                            <span>[N.cName.L]</span>
+                            <a href="novelInfo" data-action="switch" data-params="N.id.L">N.title.L</a>
+                        </div>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="mod block comments reviews">
+            <div class="hd">
+                <div id="comment">
+                    <a href="comment" data-action="switch" data-params="N.params.L" class="add">写评论</a>
+                </div>
+                <h4>评论 (<em class="commentCount">13</em>)</h4>
+            </div>
+            <div class="bd">
+                <div class="bd">
+                    <ul data-unload="once" data-cmd="page_comment" data-params='{"pageSize":10,"novelId":"N.params.L"}'>
+                        <li>
+                            <div class="right">
+                                N.content.L
+                                <div class="controls">
+                                    <a class="name" href="#">N.nickname.L</a>
+                                    <span class="time">N.time.L</span>
+                                </div>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

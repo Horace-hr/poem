@@ -1,0 +1,29 @@
+<div class="page" data-title="原创诗词" data-preload="userCenter">
+
+    <div class="topBar">
+        <a href="userCenter" data-action="switch" class="back">返回</a>
+    </div>
+
+    <form class="panel panel-detail mt10">
+        <div class="panel-header">
+           新建诗词
+        </div>
+        <div class="panel-body">
+            <textarea name="x.title" rows="2" class="form-control" placeholder="请输入诗词标题"></textarea>
+        </div>
+        
+        <div class="panel-body">
+            <textarea name="x.content" rows="5" class="form-control" placeholder="请输入自己的原创诗词"></textarea>
+        </div>
+        
+         <div class="panel-body">
+            <textarea name="x.note" rows="2" class="form-control" placeholder="添加注释"></textarea>
+        </div>
+        
+        <div class="panel-footer">
+        	<!--  <input type="hidden" name="x.novelId" value="N.params.L"> -->
+            <a href="/save/createPoem" data-submit="true" data-cmd="dealCreatePoem" class="btns btn-default btn-block">发表诗词</a>
+        </div>
+    </form>
+
+</div>

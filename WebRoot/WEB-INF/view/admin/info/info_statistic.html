@@ -1,0 +1,290 @@
+<!--:
+	layout("/common/_layout.html" , {title : '数据统计' , page:'statistic'}){
+-->
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="block block-success">
+                <div class="clearfix">
+                    <h1 class="pull-left">${today.income!(0)*0.01,"0.00"}</h1>
+                    <div class="pull-right"></div>
+                </div>
+                <div class="clearfix">
+                    <div class="pull-left">充值金额</div>
+                    <div class="pull-right fz12">对比昨日</div>
+                </div>
+
+                <div class="progress">
+
+                        <!--: if( yesterday.income == 0  ){ -->
+                            <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 100%">
+                                    100%
+                            </div>
+                        <!--: }else{ -->
+
+                        <!--:
+                            var width = (today.income/yesterday.income)*100 ;
+                        -->
+                        <div class="progress-bar progress-bar-success progress-bar-striped" style="width: ${width}%">
+                            ${width,"0.00"}%
+                        </div>
+
+                        <!--: }-->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="block block-success">
+                <div class="clearfix">
+                    <h1 class="pull-left">${today.registers!(0)}</h1>
+                    <div class="pull-right"></div>
+                </div>
+                <div class="clearfix">
+                    <div class="pull-left">注册用户数</div>
+                    <div class="pull-right fz12 ">对比昨日</div>
+                </div>
+
+                <div class="progress">
+
+                    <!--: if( yesterday.registers == 0  ){ -->
+                    <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 100%">
+                        100%
+                    </div>
+                    <!--: }else{ -->
+
+                    <!--:
+                        var width = (today.registers/yesterday.registers)*100 ;
+                    -->
+                    <div class="progress-bar progress-bar-success progress-bar-striped" style="width: ${width}%">
+                        ${width,"0.00"}%
+                    </div>
+
+                    <!--: }-->
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="block block-success">
+                <div class="clearfix">
+                    <h1 class="pull-left">${today.clicks!(0)}</h1>
+                    <div class="pull-right"></div>
+                </div>
+                <div class="clearfix">
+                    <div class="pull-left">推广点击量</div>
+                    <div class="pull-right fz12 ">对比昨日</div>
+                </div>
+                <div class="progress">
+
+                    <!--: if( yesterday.clicks == 0  ){ -->
+                    <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 100%">
+                        100%
+                    </div>
+                    <!--: }else{ -->
+
+                    <!--:
+                        var width = (today.clicks/yesterday.clicks)*100 ;
+                    -->
+                    <div class="progress-bar progress-bar-success progress-bar-striped" style="width: ${width}%">
+                        ${width,"0.00"}%
+                    </div>
+
+                    <!--: }-->
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="block block-success">
+                <div class="clearfix">
+                    <h1 class="pull-left">${today.pv!(0)}</h1>
+                </div>
+                <div class="clearfix">
+                    <div class="pull-left">PV</div>
+                    <div class="pull-right fz12 ">对比昨日</div>
+                </div>
+                <div class="progress">
+
+                    <!--: if( yesterday.pv == 0  ){ -->
+                    <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 100%">
+                        100%
+                    </div>
+                    <!--: }else{ -->
+
+                    <!--:
+                        var width = (today.pv/yesterday.pv)*100 ;
+                    -->
+                    <div class="progress-bar progress-bar-success progress-bar-striped" style="width: ${width}%">
+                        ${width,"0.00"}%
+                    </div>
+
+                    <!--: }-->
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <div class="bg-info" style="padding: 10px 15px;margin-bottom: 15px;">
+        <div id="main" style="height:400px"></div>
+    </div>
+
+    <div class="panel panel-info">
+
+        <div class="panel-heading clearfix">
+            一周数据
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>充值金额</th>
+                    <th>充值用户</th>
+                    <th>注册人数</th>
+                    <th>PV</th>
+                    <th>推广点击量</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:  for( x in page.list ){-->
+                <tr class="quote-list">
+                    <td>
+                        ${x.date}
+                    </td>
+
+                    <td class="text-success">
+                        ${x.income*0.01,"0.00"}
+                    </td>
+
+                    <td>
+                        ${x.rechargers}
+                    </td>
+                    <td>${x.registers}</td>
+                    <td>${x.pv}</td>
+                    <td>${x.clicks}</td>
+                </tr>
+                <!--: }-->
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--:}-->
+
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+
+    // 使用
+    require(
+            [
+                'echarts',
+                'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+
+                var option = {
+                    title : {
+                        text: '平台最近两日收入比对',
+                        subtext: ''
+                    },
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data:['今日','昨日']
+                    },
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            magicType : {show: true, type: ['line', 'bar']},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    calculable : true,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            boundaryGap : false,
+                            data : [ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18 , 19 , 20 , 21 , 22 , 23 ]
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'今日',
+                            type:'line',
+                            smooth:true,
+                            itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
+                            data:[
+                                <!--: for(x in todayList){ -->
+                                <!--: if(xLP.index != 1 ){ -->
+                                   , ${x.income!(0)*0.01,"0.00"}
+                                <!--: }else{ -->
+                                   ${x.income!(0)*0.01,"0.00"}
+                                <!--: } -->
+                                <!--: } -->
+                            ]
+                        },
+                        {
+                            name:'昨日',
+                            type:'line',
+                            smooth:true,
+                            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                            data:[
+                                <!--: for(x in yesterdayList){ -->
+                                <!--: if(xLP.index != 1 ){ -->
+                                    , ${x.income!(0)*0.01,"0.00"}
+                                <!--: }else{ -->
+                                    ${x.income!(0)*0.01,"0.00"}
+                                <!--: } -->
+                                <!--: } -->
+                            ]
+                        }
+                    ]
+                };
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+    );
+
+
+</script>

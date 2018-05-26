@@ -5,8 +5,8 @@ import com.qiniu.util.StringMap;
 
 public class QiniuUtil {
 	
-	public static String ACCESS_KEY = "I6d124Obhcqyfx1obMlwXg2apX087yC4Zio-yJxR";
-	public static String SECRET_KEY = "Bi2NtRxMiQPjX_sjGfutjD7AcK_3-TI4kN8UA4rD";
+	public static String ACCESS_KEY = "";//your ACCESS_KEY
+	public static String SECRET_KEY = "";//your SECRET_KEY
 
 
 	static Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);

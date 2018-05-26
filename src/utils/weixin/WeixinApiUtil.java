@@ -181,8 +181,6 @@ public class WeixinApiUtil {
 		authAccessTokenUrlBuffer.append("&secret=").append(secret);
 		authAccessTokenUrlBuffer.append("&code=").append(code);
 		authAccessTokenUrlBuffer.append("&grant_type=").append("authorization_code");
-		System.out.println("四个参数的appid="+appid);
-		System.out.println("四个参数的appSecret="+secret);
 		String content = HttpUtil.getContentFromUrl(authAccessTokenUrlBuffer.toString());
 		JSONObject json = JSONObject.parseObject(content);
 		String openid = json.getString("openid");
@@ -193,10 +191,6 @@ public class WeixinApiUtil {
 			getUserInfo.append("&openid=").append(openid).append("&lang=zh_CN");
 			String userInfoContent = HttpUtil.getContentFromUrl(getUserInfo.toString());
 			JSONObject userinfoObject = JSONObject.parseObject(userInfoContent);
-			System.out.println("微信工具类返回的是否订阅："+userinfoObject.getString("subscribe"));
-			System.out.println("微信工具类返回的用户昵称："+userinfoObject.getString("nickname"));
-			System.out.println("微信工具类返回的用户头像："+userinfoObject.getString("headimgurl"));
-			System.out.println("微信工具类返回的用户openId："+userinfoObject.getString("openid"));
 			return userinfoObject;
 		}
 		return null ;
@@ -229,9 +223,8 @@ public class WeixinApiUtil {
 	}
 	
 	public static String getAccessToken(){
-		System.out.println("进入getAccessToken方法中");
-		String appid = "wxf2d63a8ffc7a772e";
-		String secret= "6250d1ad88f404955dc36730147736c5";
+		String appid = "";
+		String secret= "";
 		StringBuffer authAccessTokenUrlBuffer = new StringBuffer(accessTokenUrl);
 		authAccessTokenUrlBuffer.append("?grant_type=client_credential");
 		authAccessTokenUrlBuffer.append("&appid=").append(appid);
